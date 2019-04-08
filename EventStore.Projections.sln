@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Projections", "EventStore.Projections\EventStore.Projections.csproj", "{65DE4D5E-8A8E-4AD1-9DC4-A795D3B5CD00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Projections.Facts", "EventStore.Projections.Facts\EventStore.Projections.Facts.csproj", "{F5962A0A-D5B8-45E3-968C-2719EBB47736}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65DE4D5E-8A8E-4AD1-9DC4-A795D3B5CD00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65DE4D5E-8A8E-4AD1-9DC4-A795D3B5CD00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65DE4D5E-8A8E-4AD1-9DC4-A795D3B5CD00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65DE4D5E-8A8E-4AD1-9DC4-A795D3B5CD00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
