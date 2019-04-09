@@ -5,10 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a4068c8f-0617-4fe4-b00a-d61dd27013a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventStore.Projections/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventStore.Projections/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventStore.Projections.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections.sln.DotSettings" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Build/Build.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Build.csproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,22 +16,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs">
+        <entry file="file://$PROJECT_DIR$/Build/Build.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="93" selection-start-line="93" selection-end-line="93" />
-              <folding>
-                <marker date="1554803873668" expanded="true" signature="52:3431" ph="{...}" />
-                <marker date="1554803873668" expanded="false" signature="65:202" ph="..." />
-                <marker date="1554803873668" expanded="true" signature="285:3429" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="520:638" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="832:1992" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="1504:1874" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="1699:1788" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="2212:3423" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="2897:3259" ph="{...}" />
-                <marker date="1554803873668" expanded="true" signature="3104:3193" ph="{...}" />
-              </folding>
+            <state relative-caret-position="104">
+              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -47,6 +32,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDocker.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Build/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8E95483A-096F-4F8D-A457-395B24FD8A53/f8/071bd4ed/Position.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventStore.Projections.Facts/FactCollections/EventStoreCollection.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/EventStore.Projections/Subscription.cs" root0="FORCE_HIGHLIGHTING" />
@@ -61,18 +47,20 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/EventStore.Projections/Class1.cs" />
-        <option value="$PROJECT_DIR$/EventStore.Projections/EventStore.Projections.csproj" />
         <option value="$PROJECT_DIR$/EventStore.Projections/Subscription.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/UnitTest1.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/Class1.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/FactCollections/Class1.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/FactCollections/EventStoreCollection.cs" />
-        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" />
         <option value="$PROJECT_DIR$/EventStore.Projections/InternalsVisisbleTo.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDocker.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" />
+        <option value="$PROJECT_DIR$/Build/Program.cs" />
+        <option value="$PROJECT_DIR$/EventStore.Projections/EventStore.Projections.csproj" />
+        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" />
+        <option value="$PROJECT_DIR$/Build/Build.csproj" />
       </list>
     </option>
   </component>
@@ -99,24 +87,7 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="EventStore.Projections.Facts" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="EventStore.Projections.Facts" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="Docker" type="24d0babc:SolutionExplorerModelNode" />
-            </path>
-            <path>
-              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
-              <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="EventStore.Projections.Facts" type="24d0babc:SolutionExplorerModelNode" />
-              <item name="FactCollections" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Build" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -145,6 +116,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager" selected=".NET Project.Default">
+    <configuration name="Default" type="DotNetProject" factoryName=".NET Project">
+      <option name="EXE_PATH" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <option name="USE_MONO" value="0" />
+      <option name="RUNTIME_ARGUMENTS" value="" />
+      <option name="PROJECT_PATH" value="" />
+      <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
+      <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
+      <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
+      <option name="PROJECT_KIND" value="None" />
+      <option name="PROJECT_TFM" value="" />
+      <method v="2">
+        <option name="Build" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -155,12 +146,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554750315173</updated>
-      <workItem from="1554750318624" duration="7332000" />
+      <workItem from="1554750318624" duration="9609000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7332000" />
+    <option name="totallyTimeSpent" value="9609000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -178,12 +169,12 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
       <window_info id="Capture Tool" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25641027" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25641027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="NuGet" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info active="true" anchor="bottom" id="Unit Tests" visible="true" weight="0.32946146" />
+      <window_info anchor="bottom" id="Unit Tests" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -262,19 +253,6 @@
           <caret line="14" column="16" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections.sln">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="12" column="69" selection-start-line="12" selection-start-column="69" selection-end-line="12" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections/EventStore.Projections.csproj">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8E95483A-096F-4F8D-A457-395B24FD8A53/d7/cc463b64/IEventStoreConnection.cs">
       <provider selected="true" editor-type-id="text-editor">
@@ -400,6 +378,41 @@
             <marker date="1554803873668" expanded="true" signature="2897:3259" ph="{...}" />
             <marker date="1554803873668" expanded="true" signature="3104:3193" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Build/Program.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <marker date="1554804156729" expanded="true" signature="30:171" ph="{...}" />
+            <marker date="1554804156729" expanded="true" signature="50:169" ph="{...}" />
+            <marker date="1554804156729" expanded="true" signature="96:163" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections/EventStore.Projections.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="57" lean-forward="true" selection-start-line="3" selection-start-column="57" selection-end-line="3" selection-end-column="57" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections.sln">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Build/Build.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
         </state>
       </provider>
     </entry>

@@ -1,0 +1,17 @@
+branches:
+  only:
+  - master
+  - /release-.*/
+  - /^\d+\.\d+\.\d+(-\S*)?$/
+git:
+  depth: false
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      services:
+        - docker
+      language: csharp
+      mono: none
+      dotnet: 2.2
+      script: "./build.sh"
