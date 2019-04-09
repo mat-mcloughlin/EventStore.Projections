@@ -8,6 +8,8 @@ git:
 matrix:
   include:
     - os: linux
+      before_install:
+      - chmod +x build.sh
       dist: xenial
       services:
         - docker
