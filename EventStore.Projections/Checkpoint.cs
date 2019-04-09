@@ -4,6 +4,13 @@ namespace EventStore.Projections
 
     struct Checkpoint
     {
+        readonly long? _commitPosition;
+        
+        Checkpoint(long? eventNumber)
+        {
+            _commitPosition = eventNumber;
+        }
+
         internal Position? ToPosition()
         {
             return new Position();
@@ -11,9 +18,14 @@ namespace EventStore.Projections
 
         internal long? ToEventNumber()
         {
-            return null;
+            return _commitPosition;
         }
 
-        public static Checkpoint Start => new Checkpoint();
+        internal static Checkpoint Start => new Checkpoint(null);
+
+        internal static Checkpoint EventNumber(long eventNumber)
+        {
+            return new Checkpoint(eventNumber);
+        }
     }
 }

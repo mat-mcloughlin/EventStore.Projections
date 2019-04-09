@@ -4,7 +4,12 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4068c8f-0617-4fe4-b00a-d61dd27013a1" name="Default Changelist" comment="" />
+    <list default="true" id="a4068c8f-0617-4fe4-b00a-d61dd27013a1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.EventStore.Projections/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.EventStore.Projections/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventStore.Projections.sln.DotSettings" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections.sln.DotSettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,15 +19,21 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs">
+        <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+            <state relative-caret-position="401">
+              <caret line="93" selection-start-line="93" selection-end-line="93" />
               <folding>
-                <marker date="1554754113111" expanded="true" signature="32:333" ph="{...}" />
-                <marker date="1554754113111" expanded="true" signature="78:331" ph="{...}" />
-                <marker date="1554754113111" expanded="true" signature="124:179" ph="{...}" />
-                <marker date="1554754113111" expanded="true" signature="219:264" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="52:3431" ph="{...}" />
+                <marker date="1554803873668" expanded="false" signature="65:202" ph="..." />
+                <marker date="1554803873668" expanded="true" signature="285:3429" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="520:638" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="832:1992" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="1504:1874" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="1699:1788" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="2212:3423" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="2897:3259" ph="{...}" />
+                <marker date="1554803873668" expanded="true" signature="3104:3193" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -58,10 +69,10 @@
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/FactCollections/EventStoreCollection.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" />
         <option value="$PROJECT_DIR$/EventStore.Projections/InternalsVisisbleTo.cs" />
-        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" />
-        <option value="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDocker.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs" />
+        <option value="$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs" />
+        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" />
       </list>
     </option>
   </component>
@@ -144,12 +155,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554750315173</updated>
-      <workItem from="1554750318624" duration="4143000" />
+      <workItem from="1554750318624" duration="7332000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4143000" />
+    <option name="totallyTimeSpent" value="7332000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -167,12 +178,12 @@
       <window_info id="Favorites" side_tool="true" />
       <window_info id="Image Layers" />
       <window_info id="Capture Tool" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25641027" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="NuGet" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Unit Tests" visible="true" weight="0.32954547" />
+      <window_info active="true" anchor="bottom" id="Unit Tests" visible="true" weight="0.32946146" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" />
@@ -180,7 +191,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997934" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.40865892" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -204,19 +215,6 @@
           <properties exception="System.Threading.ThreadAbortException" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs</url>
-          <line>22</line>
-          <properties documentPath="$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs" initialLine="23">
-            <startOffsets>
-              <option value="773" />
-            </startOffsets>
-            <endOffsets>
-              <option value="856" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
@@ -285,48 +283,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="17" column="67" selection-start-line="17" selection-start-column="67" selection-end-line="17" selection-end-column="67" />
-          <folding>
-            <marker date="1554754063233" expanded="true" signature="52:1783" ph="{...}" />
-            <marker date="1554754063233" expanded="false" signature="65:172" ph="..." />
-            <marker date="1554754063233" expanded="true" signature="255:1781" ph="{...}" />
-            <marker date="1554754063233" expanded="true" signature="419:507" ph="{...}" />
-            <marker date="1554754063233" expanded="true" signature="690:1775" ph="{...}" />
-            <marker date="1554754063233" expanded="true" signature="1398:1644" ph="{...}" />
-            <marker date="1554754063233" expanded="true" signature="1460:1549" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/FactCollections/EventStoreCollection.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="6" column="72" selection-start-line="6" selection-start-column="72" selection-end-line="6" selection-end-column="72" />
           <folding>
-            <marker date="1554752252888" expanded="true" signature="54:280" ph="{...}" />
-            <marker date="1554752252888" expanded="false" signature="67:91" ph="..." />
-            <marker date="1554752252888" expanded="true" signature="266:278" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-          <folding>
-            <marker date="1554754202628" expanded="true" signature="45:1842" ph="{...}" />
-            <marker date="1554754202628" expanded="false" signature="58:231" ph="..." />
-            <marker date="1554754202628" expanded="true" signature="285:1805" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="398:462" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="639:866" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="980:1193" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="1260:1799" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="1453:1545" ph="{...}" />
-            <marker date="1554754202628" expanded="true" signature="1828:1840" ph="{...}" />
+            <marker date="1554754817445" expanded="true" signature="54:280" ph="{...}" />
+            <marker date="1554754817445" expanded="false" signature="67:91" ph="..." />
+            <marker date="1554754817445" expanded="true" signature="266:278" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -336,25 +300,25 @@
         <state relative-caret-position="260">
           <caret line="21" column="36" selection-start-line="21" selection-start-column="36" selection-end-line="21" selection-end-column="36" />
           <folding>
-            <marker date="1554754209955" expanded="true" signature="45:4665" ph="{...}" />
-            <marker date="1554754209955" expanded="false" signature="58:354" ph="..." />
-            <marker date="1554754209955" expanded="true" signature="475:4663" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="856:3853" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="1376:1451" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="1600:1906" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="1716:1820" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="2008:2532" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="2180:2518" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="2280:2500" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="2803:2895" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="2897:3341" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="3017:3327" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="3234:3309" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="3895:4025" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="4069:4413" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="4112:4403" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="4468:4657" ph="{...}" />
-            <marker date="1554754209955" expanded="true" signature="4619:4647" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="45:4665" ph="{...}" />
+            <marker date="1554754817444" expanded="false" signature="58:354" ph="..." />
+            <marker date="1554754817444" expanded="true" signature="475:4663" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="856:3853" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="1376:1451" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="1600:1906" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="1716:1820" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="2008:2532" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="2180:2518" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="2280:2500" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="2803:2895" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="2897:3341" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="3017:3327" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="3234:3309" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="3895:4025" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="4069:4413" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="4112:4403" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="4468:4657" ph="{...}" />
+            <marker date="1554754817444" expanded="true" signature="4619:4647" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -364,18 +328,18 @@
         <state relative-caret-position="597">
           <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
           <folding>
-            <marker date="1554751943450" expanded="true" signature="32:3538" ph="{...}" />
-            <marker date="1554751943450" expanded="false" signature="45:107" ph="..." />
-            <marker date="1554751943450" expanded="true" signature="131:3536" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="274:444" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="862:1427" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="925:1146" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="1163:1417" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="1798:2097" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="2500:2831" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="3042:3102" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="3247:3309" ph="{...}" />
-            <marker date="1554751943450" expanded="true" signature="3476:3530" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="32:3538" ph="{...}" />
+            <marker date="1554754817446" expanded="false" signature="45:107" ph="..." />
+            <marker date="1554754817446" expanded="true" signature="131:3536" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="274:444" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="862:1427" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="925:1146" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="1163:1417" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="1798:2097" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="2500:2831" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="3042:3102" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="3247:3309" ph="{...}" />
+            <marker date="1554754817446" expanded="true" signature="3476:3530" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -387,15 +351,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/Docker/EventStoreRunningInDockerExtensions.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="21" column="98" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
+          <folding>
+            <marker date="1554802923935" expanded="true" signature="45:1842" ph="{...}" />
+            <marker date="1554802923935" expanded="false" signature="58:231" ph="..." />
+            <marker date="1554802923935" expanded="true" signature="285:1805" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="398:462" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="639:866" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="980:1193" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="1260:1799" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="1453:1545" ph="{...}" />
+            <marker date="1554802923935" expanded="true" signature="1828:1840" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/EventStore.Projections/Checkpoint.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="6" column="29" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
+        <state relative-caret-position="78">
+          <caret line="8" column="37" lean-forward="true" selection-start-line="8" selection-start-column="37" selection-end-line="8" selection-end-column="37" />
           <folding>
-            <marker date="1554754113111" expanded="true" signature="32:333" ph="{...}" />
-            <marker date="1554754113111" expanded="true" signature="78:331" ph="{...}" />
-            <marker date="1554754113111" expanded="true" signature="124:179" ph="{...}" />
-            <marker date="1554754113111" expanded="true" signature="219:264" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="32:635" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="78:633" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="171:234" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="275:330" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="370:426" ph="{...}" />
+            <marker date="1554803404483" expanded="true" signature="559:627" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="401">
+          <caret line="93" selection-start-line="93" selection-end-line="93" />
+          <folding>
+            <marker date="1554803873668" expanded="true" signature="52:3431" ph="{...}" />
+            <marker date="1554803873668" expanded="false" signature="65:202" ph="..." />
+            <marker date="1554803873668" expanded="true" signature="285:3429" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="520:638" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="832:1992" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="1504:1874" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="1699:1788" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="2212:3423" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="2897:3259" ph="{...}" />
+            <marker date="1554803873668" expanded="true" signature="3104:3193" ph="{...}" />
           </folding>
         </state>
       </provider>
