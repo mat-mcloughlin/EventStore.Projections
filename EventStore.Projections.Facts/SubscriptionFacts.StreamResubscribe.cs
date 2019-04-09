@@ -35,7 +35,7 @@ namespace EventStore.Projections.Facts
             var count = -1;
             var calledDropped = false;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, retryCount);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, new RetryPolicy(a => TimeSpan.Zero, retryCount));
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
@@ -71,7 +71,7 @@ namespace EventStore.Projections.Facts
             var calledDropped = false;
             var inMemoryCheckpoint = new InMemoryCheckpoint();
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 5);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, new RetryPolicy(a => TimeSpan.Zero, 5));
             subscription.Subscribe(new StreamId(streamId),
                 () => inMemoryCheckpoint.GetCheckpint,
                 CatchUpSubscriptionSettings.Default,

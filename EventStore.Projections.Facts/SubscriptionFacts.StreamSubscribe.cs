@@ -37,7 +37,7 @@ namespace EventStore.Projections.Facts
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, RetryPolicy.None);
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
@@ -73,7 +73,7 @@ namespace EventStore.Projections.Facts
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, RetryPolicy.None);
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.FromEventNumber(start),
                 CatchUpSubscriptionSettings.Default,

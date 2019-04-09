@@ -8,18 +8,18 @@
     {
         readonly IEventStoreConnection _eventStoreConnection;
 
-        readonly int _retryCount;
+        readonly RetryPolicy _retryPolicy;
 
         int _retryAttempts;
 
         CurrentSubscription _currentSubscription;
 
-        internal Subscription(IEventStoreConnection eventStoreConnection, int retryCount)
+        internal Subscription(IEventStoreConnection eventStoreConnection, RetryPolicy retryPolicy)
         {
             Guard.AgainstNullArgument(nameof(eventStoreConnection), eventStoreConnection);
 
             _eventStoreConnection = eventStoreConnection;
-            _retryCount = retryCount;
+            _retryPolicy = retryPolicy;
         }
 
         internal void Subscribe(StreamId streamId,
@@ -128,9 +128,12 @@
             SubscriptionDropReason reason,
             Exception exception)
         {
-            if (_retryAttempts < _retryCount)
+            if (_retryAttempts < _retryPolicy.RetryLimit)
             {
+                _retryPolicy.Wait(_retryAttempts);
+                
                 Resubscribe();
+                
                 _retryAttempts++;
             }
             else
