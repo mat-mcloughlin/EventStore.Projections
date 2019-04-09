@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Projections", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventStore.Projections.Facts", "EventStore.Projections.Facts\EventStore.Projections.Facts.csproj", "{F5962A0A-D5B8-45E3-968C-2719EBB47736}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Build", "Build\Build.csproj", "{B4D99779-BF21-4BE8-954B-573456D76710}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5962A0A-D5B8-45E3-968C-2719EBB47736}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B4D99779-BF21-4BE8-954B-573456D76710}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B4D99779-BF21-4BE8-954B-573456D76710}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B4D99779-BF21-4BE8-954B-573456D76710}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B4D99779-BF21-4BE8-954B-573456D76710}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

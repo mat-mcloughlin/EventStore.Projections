@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a4068c8f-0617-4fe4-b00a-d61dd27013a1" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Build/Build.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/Build/Build.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,10 +17,10 @@
   <component name="FileEditorManager">
     <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Build/Build.csproj">
+        <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+            <state relative-caret-position="78">
+              <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -59,8 +60,8 @@
         <option value="$PROJECT_DIR$/EventStore.Projections.Facts/SubscriptionFacts.cs" />
         <option value="$PROJECT_DIR$/Build/Program.cs" />
         <option value="$PROJECT_DIR$/EventStore.Projections/EventStore.Projections.csproj" />
-        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" />
         <option value="$PROJECT_DIR$/Build/Build.csproj" />
+        <option value="$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj" />
       </list>
     </option>
   </component>
@@ -88,6 +89,11 @@
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Build" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="EventStore.Projections" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="EventStore.Projections.Facts" type="24d0babc:SolutionExplorerModelNode" />
             </path>
           </expand>
           <select />
@@ -146,12 +152,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1554750315173</updated>
-      <workItem from="1554750318624" duration="9609000" />
+      <workItem from="1554750318624" duration="9915000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9609000" />
+    <option name="totallyTimeSpent" value="9915000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -402,17 +408,17 @@
     <entry file="file://$PROJECT_DIR$/EventStore.Projections.sln">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Build/Build.csproj">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
           <caret line="4" column="38" selection-start-line="4" selection-start-column="38" selection-end-line="4" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EventStore.Projections.Facts/EventStore.Projections.Facts.csproj">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="38" selection-start-line="3" selection-start-column="38" selection-end-line="3" selection-end-column="38" />
         </state>
       </provider>
     </entry>

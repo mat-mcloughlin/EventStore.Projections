@@ -10,7 +10,7 @@
         <e p="Build.csproj" t="IncludeRecursive" />
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.1" t="Include">
+            <e p="netcoreapp2.2" t="Include">
               <e p="Build.AssemblyInfo.cs" t="Include" />
             </e>
           </e>
@@ -52,13 +52,13 @@
         </e>
         <e p="obj" t="ExcludeRecursive">
           <e p="Debug" t="Include">
-            <e p="netcoreapp2.1" t="Include">
+            <e p="netcoreapp2.2" t="Include">
               <e p="EventStore.Projections.Facts.AssemblyInfo.cs" t="Include" />
               <e p="EventStore.Projections.Facts.Program.cs" t="Include" />
             </e>
           </e>
         </e>
-        <e p="SubscriptionFacts.cs" t="Include" />
+        <e p="SubscriptionFacts.Stream.cs" t="Include" />
       </e>
       <e p="EventStore.Projections.sln" t="IncludeFlat" />
       <e p="packages" t="ExcludeRecursive" />
