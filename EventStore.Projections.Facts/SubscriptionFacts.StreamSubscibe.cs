@@ -10,13 +10,13 @@ namespace EventStore.Projections.Facts
     using Xunit.Abstractions;
 
     [Collection(nameof(EventStoreCollection))]
-    public class SubscriptionFacts
+    public class SubscriptionFactsStreamSubscribe
     {
         readonly EventStoreRunningInDocker _eventStoreRunningInDocker;
 
         readonly ITestOutputHelper _output;
 
-        public SubscriptionFacts(EventStoreRunningInDocker eventStoreRunningInDocker, ITestOutputHelper output)
+        public SubscriptionFactsStreamSubscribe(EventStoreRunningInDocker eventStoreRunningInDocker, ITestOutputHelper output)
         {
             _eventStoreRunningInDocker = eventStoreRunningInDocker;
             _output = output;
@@ -37,7 +37,7 @@ namespace EventStore.Projections.Facts
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
             subscription.Subscribe(streamId,
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
@@ -73,7 +73,7 @@ namespace EventStore.Projections.Facts
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection);
+            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
             subscription.Subscribe(streamId,
                 () => Checkpoint.EventNumber(start),
                 CatchUpSubscriptionSettings.Default,

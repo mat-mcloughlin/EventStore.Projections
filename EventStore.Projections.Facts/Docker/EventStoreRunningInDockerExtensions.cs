@@ -22,6 +22,13 @@ namespace EventStore.Projections.Facts.Docker
             var events = Enumerable.Range(0, numberOfEvents).Select(s => (object) new RandomEvent()).ToList();
             await AppendEventsToStream(eventStoreRunningInDocker.Connection, streamId, events);
         }
+        
+        internal static async Task AppendEvent(this EventStoreRunningInDocker eventStoreRunningInDocker,
+            string streamId,
+            object @event)
+        {
+            await AppendEventsToStream(eventStoreRunningInDocker.Connection, streamId, new List<object> { @event });
+        }
 
         static Task AppendEventsToStream(IEventStoreConnection connection, string streamId, List<object> events)
         {

@@ -8,11 +8,18 @@
     {
         readonly IEventStoreConnection _eventStoreConnection;
 
-        internal Subscription(IEventStoreConnection eventStoreConnection)
-        {
-            _eventStoreConnection = eventStoreConnection;
+        readonly int _retryCount;
 
+        int _retryAttempts;
+
+        CurrentSubscription _currentSubscription;
+
+        internal Subscription(IEventStoreConnection eventStoreConnection, int retryCount)
+        {
             Guard.AgainstNullArgument(nameof(eventStoreConnection), eventStoreConnection);
+
+            _eventStoreConnection = eventStoreConnection;
+            _retryCount = retryCount;
         }
 
         internal void Subscribe(string streamId,
@@ -20,8 +27,15 @@
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
             Action<EventStoreCatchUpSubscription> liveProcessingStarted = null,
-            Action<EventStoreCatchUpSubscription, SubscriptionDropReason, Exception> subscriptionDropped = null)
+            Action<SubscriptionDropReason, Exception> subscriptionDropped = null)
         {
+            _currentSubscription = new CurrentSubscription(streamId,
+                checkpoint,
+                settings,
+                eventAppeared,
+                liveProcessingStarted,
+                subscriptionDropped);
+
             if (string.IsNullOrWhiteSpace(streamId))
             {
                 SubscribeToAll(checkpoint,
@@ -45,7 +59,7 @@
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
             Action<EventStoreCatchUpSubscription> liveProcessingStarted,
-            Action<EventStoreCatchUpSubscription, SubscriptionDropReason, Exception> subscriptionDropped)
+            Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
             _eventStoreConnection.SubscribeToAllFrom(checkpoint().ToPosition(),
                 settings,
@@ -59,7 +73,7 @@
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
             Action<EventStoreCatchUpSubscription> liveProcessingStarted,
-            Action<EventStoreCatchUpSubscription, SubscriptionDropReason, Exception> subscriptionDropped)
+            Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
             _eventStoreConnection.SubscribeToStreamFrom(streamId,
                 checkpoint().ToEventNumber(),
@@ -70,9 +84,27 @@
         }
 
         Action<EventStoreCatchUpSubscription, SubscriptionDropReason, Exception> OnSubscriptionDropped(
-            Action<EventStoreCatchUpSubscription, SubscriptionDropReason, Exception> subscriptionDropped)
+            Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
-            return subscriptionDropped;
+            return (subscription, reason, exception) =>
+            {
+                subscription.Stop(); // Bug in event store where it keeps receiving events
+
+                switch (reason)
+                {
+                    case SubscriptionDropReason.SubscribingError:
+                    case SubscriptionDropReason.ServerError:
+                    case SubscriptionDropReason.ConnectionClosed:
+                    case SubscriptionDropReason.CatchUpError:
+                    case SubscriptionDropReason.ProcessingQueueOverflow:
+                    case SubscriptionDropReason.EventHandlerException:
+                        TryToRestartSubscription(subscriptionDropped, reason, exception);
+                        break;
+                    default:
+                        subscriptionDropped(reason, exception);
+                        break;
+                }
+            };
         }
 
         Action<EventStoreCatchUpSubscription> OnLiveProcessingStarted(
@@ -85,6 +117,31 @@
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared)
         {
             return eventAppeared;
+        }
+
+        void TryToRestartSubscription(Action<SubscriptionDropReason, Exception> subscriptionDropped,
+            SubscriptionDropReason reason,
+            Exception exception)
+        {
+            if (_retryAttempts < _retryCount)
+            {
+                Resubscribe();
+                _retryAttempts++;
+            }
+            else
+            {
+                subscriptionDropped(reason, exception);
+            }
+        }
+
+        void Resubscribe()
+        {
+            Subscribe(_currentSubscription.StreamId,
+                _currentSubscription.Checkpoint,
+                _currentSubscription.Settings,
+                _currentSubscription.EventAppeared,
+                _currentSubscription.LiveProcessingStarted,
+                _currentSubscription.SubscriptionDropped);
         }
     }
 }
