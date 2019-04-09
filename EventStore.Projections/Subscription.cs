@@ -22,7 +22,7 @@
             _retryCount = retryCount;
         }
 
-        internal void Subscribe(string streamId,
+        internal void Subscribe(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
@@ -36,7 +36,7 @@
                 liveProcessingStarted,
                 subscriptionDropped);
 
-            if (string.IsNullOrWhiteSpace(streamId))
+            if (Equals(streamId, StreamId.All))
             {
                 SubscribeToAll(checkpoint,
                     settings,
@@ -68,14 +68,14 @@
                 OnSubscriptionDropped(subscriptionDropped));
         }
 
-        void SubscribeToStream(string streamId,
+        void SubscribeToStream(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
             Action<EventStoreCatchUpSubscription> liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
-            _eventStoreConnection.SubscribeToStreamFrom(streamId,
+            _eventStoreConnection.SubscribeToStreamFrom(streamId.Id,
                 checkpoint().ToEventNumber(),
                 settings,
                 OnEventAppeared(eventAppeared),

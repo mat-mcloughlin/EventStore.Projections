@@ -6,7 +6,7 @@ namespace EventStore.Projections
 
     class CurrentSubscription
     {
-        internal CurrentSubscription(string streamId,
+        internal CurrentSubscription(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
@@ -21,7 +21,7 @@ namespace EventStore.Projections
             SubscriptionDropped = subscriptionDropped;
         }
 
-        internal string StreamId { get; }
+        internal StreamId StreamId { get; }
 
         internal Func<Checkpoint> Checkpoint { get; }
 

@@ -1,5 +1,3 @@
-using Xunit;
-
 namespace EventStore.Projections.Facts
 {
     using System;
@@ -7,6 +5,7 @@ namespace EventStore.Projections.Facts
     using ClientAPI;
     using Docker;
     using FactCollections;
+    using Xunit;
     using Xunit.Abstractions;
 
     [Collection(nameof(EventStoreCollection))]
@@ -39,7 +38,7 @@ namespace EventStore.Projections.Facts
             var count = 0;
 
             var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
-            subscription.Subscribe(streamId,
+            subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
                 (s, e) =>
@@ -75,7 +74,7 @@ namespace EventStore.Projections.Facts
             var count = 0;
 
             var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
-            subscription.Subscribe(streamId,
+            subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.FromEventNumber(start),
                 CatchUpSubscriptionSettings.Default,
                 (s, e) =>
