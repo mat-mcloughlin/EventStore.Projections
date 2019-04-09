@@ -15,7 +15,7 @@ namespace EventStore.Projections.Facts.Docker
             TypeNameHandling = TypeNameHandling.None
         };
 
-        internal static async Task GenerateRandomEvents(this EventStoreRunningInDocker eventStoreRunningInDocker,
+        internal static async Task AppendRandomEvents(this EventStoreRunningInDocker eventStoreRunningInDocker,
             string streamId,
             int numberOfEvents)
         {

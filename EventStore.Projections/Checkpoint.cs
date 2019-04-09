@@ -23,8 +23,8 @@ namespace EventStore.Projections
 
         internal static Checkpoint Start => new Checkpoint(null);
 
-        internal static Checkpoint EventNumber(long eventNumber)
-        {
+        internal static Checkpoint FromEventNumber(long? eventNumber)
+        {    
             return new Checkpoint(eventNumber);
         }
     }

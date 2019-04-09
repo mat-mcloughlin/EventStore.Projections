@@ -116,7 +116,12 @@
         Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> OnEventAppeared(
             Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared)
         {
-            return eventAppeared;
+            return async (s, e) =>
+            {
+                await eventAppeared(s, e);
+                _retryAttempts = 0;
+            };
+            
         }
 
         void TryToRestartSubscription(Action<SubscriptionDropReason, Exception> subscriptionDropped,

@@ -16,7 +16,8 @@ namespace EventStore.Projections.Facts
 
         readonly ITestOutputHelper _output;
 
-        public SubscriptionFactsStreamSubscribe(EventStoreRunningInDocker eventStoreRunningInDocker, ITestOutputHelper output)
+        public SubscriptionFactsStreamSubscribe(EventStoreRunningInDocker eventStoreRunningInDocker,
+            ITestOutputHelper output)
         {
             _eventStoreRunningInDocker = eventStoreRunningInDocker;
             _output = output;
@@ -29,10 +30,10 @@ namespace EventStore.Projections.Facts
         public async Task successfully_subscribes_to_a_single_stream_by_id_from_start(int eventCount)
         {
             var streamId = "test" + Guid.NewGuid().ToString("N");
-            await _eventStoreRunningInDocker.GenerateRandomEvents(streamId, eventCount);
+            await _eventStoreRunningInDocker.AppendRandomEvents(streamId, eventCount);
 
             var anotherStreamId = "test" + Guid.NewGuid().ToString("N");
-            await _eventStoreRunningInDocker.GenerateRandomEvents(anotherStreamId, eventCount);
+            await _eventStoreRunningInDocker.AppendRandomEvents(anotherStreamId, eventCount);
 
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
@@ -45,12 +46,12 @@ namespace EventStore.Projections.Facts
                 {
                     count++;
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");
-                    
+
                     if (count >= eventCount)
                     {
                         tcs.SetResult(true);
                     }
-                    
+
                     return Task.CompletedTask;
                 });
 
@@ -65,23 +66,23 @@ namespace EventStore.Projections.Facts
         public async Task successfully_subscribes_to_a_single_stream_by_id_from_checkpoint(int eventCount, long start)
         {
             var streamId = "test" + Guid.NewGuid().ToString("N");
-            await _eventStoreRunningInDocker.GenerateRandomEvents(streamId, eventCount);
+            await _eventStoreRunningInDocker.AppendRandomEvents(streamId, eventCount);
 
             var anotherStreamId = "test" + Guid.NewGuid().ToString("N");
-            await _eventStoreRunningInDocker.GenerateRandomEvents(anotherStreamId, eventCount);
+            await _eventStoreRunningInDocker.AppendRandomEvents(anotherStreamId, eventCount);
 
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
             var subscription = new Subscription(_eventStoreRunningInDocker.Connection, 0);
             subscription.Subscribe(streamId,
-                () => Checkpoint.EventNumber(start),
+                () => Checkpoint.FromEventNumber(start),
                 CatchUpSubscriptionSettings.Default,
                 (s, e) =>
                 {
                     count++;
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");
-                    
+
                     if (count >= eventCount - start - 1)
                     {
                         tcs.SetResult(true);
