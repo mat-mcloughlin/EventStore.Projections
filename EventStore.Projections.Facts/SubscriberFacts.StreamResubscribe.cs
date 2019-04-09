@@ -5,17 +5,18 @@ namespace EventStore.Projections.Facts
     using ClientAPI;
     using Docker;
     using FactCollections;
+    using Helpers;
     using Xunit;
     using Xunit.Abstractions;
 
     [Collection(nameof(EventStoreCollection))]
-    public class SubscriptionFactsStreamResubscribe
+    public class SubscriberFactsStreamResubscribe
     {
         readonly EventStoreRunningInDocker _eventStoreRunningInDocker;
 
         readonly ITestOutputHelper _output;
 
-        public SubscriptionFactsStreamResubscribe(EventStoreRunningInDocker eventStoreRunningInDocker,
+        public SubscriberFactsStreamResubscribe(EventStoreRunningInDocker eventStoreRunningInDocker,
             ITestOutputHelper output)
         {
             _eventStoreRunningInDocker = eventStoreRunningInDocker;
@@ -28,15 +29,17 @@ namespace EventStore.Projections.Facts
         [InlineData(15)]
         public async Task successfully_resubscribes_to_a_single_stream_by_id(int retryCount)
         {
-            var streamId = "test" + Guid.NewGuid().ToString("N");
+            var streamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(streamId, 1);
 
             var tcs = new TaskCompletionSource<bool>();
             var count = -1;
             var calledDropped = false;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, new RetryPolicy(a => TimeSpan.Zero, retryCount));
-            subscription.Subscribe(new StreamId(streamId),
+            var subscriber = new Subscriber(_eventStoreRunningInDocker.Connection,
+                LoggingAdaptor.Empty,
+                new RetryPolicy(a => TimeSpan.Zero, retryCount));
+            subscriber.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
                 (s, e) =>
@@ -53,15 +56,15 @@ namespace EventStore.Projections.Facts
                 });
 
             await Task.WhenAny(tcs.Task, Task.Delay(5000));
-            
+
             Assert.Equal(retryCount, count);
             Assert.True(calledDropped);
         }
-        
+
         [Fact]
         public async Task successfully_resets_retry_to_a_single_stream_by_id()
         {
-            var streamId = "test" + Guid.NewGuid().ToString("N");
+            var streamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(streamId, 30);
 
             var tcs = new TaskCompletionSource<bool>();
@@ -71,8 +74,10 @@ namespace EventStore.Projections.Facts
             var calledDropped = false;
             var inMemoryCheckpoint = new InMemoryCheckpoint();
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, new RetryPolicy(a => TimeSpan.Zero, 5));
-            subscription.Subscribe(new StreamId(streamId),
+            var subscriber = new Subscriber(_eventStoreRunningInDocker.Connection,
+                LoggingAdaptor.Empty,
+                new RetryPolicy(a => TimeSpan.Zero, 5));
+            subscriber.Subscribe(new StreamId(streamId),
                 () => inMemoryCheckpoint.GetCheckpint,
                 CatchUpSubscriptionSettings.Default,
                 (s, e) =>
@@ -85,7 +90,7 @@ namespace EventStore.Projections.Facts
                         initialRetryCount++;
                         throw new Exception();
                     }
-                    
+
                     if (count >= 15) // Another 5 times
                     {
                         finalRetryCount++;
@@ -102,7 +107,7 @@ namespace EventStore.Projections.Facts
                 });
 
             await Task.WhenAny(tcs.Task, Task.Delay(5000));
-            
+
             Assert.Equal(4, initialRetryCount);
             Assert.Equal(5, finalRetryCount);
             Assert.True(calledDropped);
@@ -117,7 +122,7 @@ namespace EventStore.Projections.Facts
         {
             _checkpoint = checkpoint;
         }
-        
+
         internal Checkpoint GetCheckpint => Checkpoint.FromEventNumber(_checkpoint);
     }
 }

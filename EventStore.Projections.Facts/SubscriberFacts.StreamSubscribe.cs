@@ -5,6 +5,7 @@ namespace EventStore.Projections.Facts
     using ClientAPI;
     using Docker;
     using FactCollections;
+    using Helpers;
     using Xunit;
     using Xunit.Abstractions;
 
@@ -28,16 +29,18 @@ namespace EventStore.Projections.Facts
         [InlineData(15)]
         public async Task successfully_subscribes_to_a_single_stream_by_id_from_start(int eventCount)
         {
-            var streamId = "test" + Guid.NewGuid().ToString("N");
+            var streamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(streamId, eventCount);
 
-            var anotherStreamId = "test" + Guid.NewGuid().ToString("N");
+            var anotherStreamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(anotherStreamId, eventCount);
 
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, RetryPolicy.None);
+            var subscription = new Subscriber(_eventStoreRunningInDocker.Connection,
+                LoggingAdaptor.Empty, 
+                RetryPolicy.None);
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
@@ -64,16 +67,18 @@ namespace EventStore.Projections.Facts
         [InlineData(15, 8)]
         public async Task successfully_subscribes_to_a_single_stream_by_id_from_checkpoint(int eventCount, long start)
         {
-            var streamId = "test" + Guid.NewGuid().ToString("N");
+            var streamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(streamId, eventCount);
 
-            var anotherStreamId = "test" + Guid.NewGuid().ToString("N");
+            var anotherStreamId = "test-" + Guid.NewGuid().ToString("N");
             await _eventStoreRunningInDocker.AppendRandomEvents(anotherStreamId, eventCount);
 
             var tcs = new TaskCompletionSource<bool>();
             var count = 0;
 
-            var subscription = new Subscription(_eventStoreRunningInDocker.Connection, RetryPolicy.None);
+            var subscription = new Subscriber(_eventStoreRunningInDocker.Connection,
+                LoggingAdaptor.Empty, 
+                RetryPolicy.None);
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.FromEventNumber(start),
                 CatchUpSubscriptionSettings.Default,

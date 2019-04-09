@@ -30,5 +30,10 @@ namespace EventStore.Projections
         {    
             return new Checkpoint(eventNumber);
         }
+
+        public override string ToString()
+        {
+            return $"{_commitPosition}/{_preparePosition}";
+        }
     }
 }

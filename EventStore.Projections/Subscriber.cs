@@ -4,21 +4,27 @@
     using System.Threading.Tasks;
     using ClientAPI;
 
-    class Subscription
+    class Subscriber
     {
         readonly IEventStoreConnection _eventStoreConnection;
 
-        readonly RetryPolicy _retryPolicy;
+        readonly LoggingAdaptor _loggingAdaptor;
 
-        int _retryAttempts;
+        readonly RetryPolicy _retryPolicy;
 
         CurrentSubscription _currentSubscription;
 
-        internal Subscription(IEventStoreConnection eventStoreConnection, RetryPolicy retryPolicy)
+        int _retryAttempts;
+
+        internal Subscriber(IEventStoreConnection eventStoreConnection,
+            LoggingAdaptor loggingAdaptor,
+            RetryPolicy retryPolicy)
         {
             Guard.AgainstNullArgument(nameof(eventStoreConnection), eventStoreConnection);
+            Guard.AgainstNullArgument(nameof(loggingAdaptor), loggingAdaptor);
 
             _eventStoreConnection = eventStoreConnection;
+            _loggingAdaptor = loggingAdaptor;
             _retryPolicy = retryPolicy;
         }
 
@@ -61,6 +67,9 @@
             Action<EventStoreCatchUpSubscription> liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
+            _loggingAdaptor.Information("Subscribing to all stream starting at checkpoint {0}",
+                checkpoint().ToString());
+
             _eventStoreConnection.SubscribeToAllFrom(checkpoint().ToPosition(),
                 settings,
                 OnEventAppeared(eventAppeared),
@@ -75,6 +84,10 @@
             Action<EventStoreCatchUpSubscription> liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
+            _loggingAdaptor.Information("Subscribing to {0} stream starting at checkpoint {1}",
+                streamId.ToString(),
+                checkpoint().ToString());
+
             _eventStoreConnection.SubscribeToStreamFrom(streamId.Id,
                 checkpoint().ToEventNumber(),
                 settings,
@@ -101,7 +114,7 @@
                         TryToRestartSubscription(subscriptionDropped, reason, exception);
                         break;
                     default:
-                        subscriptionDropped(reason, exception);
+                        DropSubscription(subscriptionDropped, reason, exception);
                         break;
                 }
             };
@@ -121,7 +134,6 @@
                 await eventAppeared(s, e);
                 _retryAttempts = 0;
             };
-            
         }
 
         void TryToRestartSubscription(Action<SubscriptionDropReason, Exception> subscriptionDropped,
@@ -130,16 +142,36 @@
         {
             if (_retryAttempts < _retryPolicy.RetryLimit)
             {
+                _loggingAdaptor.Warning(
+                    "Subscription dropped, reason: {0} {1}, attempting to restart in {2}s {3}/{4}",
+                    reason,
+                    exception.Message,
+                    _retryPolicy.CurrentWaitTime(_retryAttempts),
+                    _retryAttempts + 1,
+                    _retryPolicy.RetryLimit);
+
                 _retryPolicy.Wait(_retryAttempts);
-                
+
                 Resubscribe();
-                
+
                 _retryAttempts++;
             }
             else
             {
-                subscriptionDropped?.Invoke(reason, exception);
+                DropSubscription(subscriptionDropped, reason, exception);
             }
+        }
+
+        void DropSubscription(Action<SubscriptionDropReason, Exception> subscriptionDropped,
+            SubscriptionDropReason reason,
+            Exception exception)
+        {
+            _loggingAdaptor.Error("Subscription dropped, reason: {0} {1}",
+                exception,
+                reason,
+                exception.Message);
+            
+            subscriptionDropped?.Invoke(reason, exception);
         }
 
         void Resubscribe()

@@ -16,11 +16,13 @@ namespace EventStore.Projections
         internal RetryPolicy(Func<int, TimeSpan> strategy, int retryLimit)
         {
             Guard.AgainstNullArgument(nameof(strategy), strategy);
-
+    
             _strategy = strategy;
             RetryLimit = retryLimit;
         }
 
+        public TimeSpan CurrentWaitTime(int retryCount) => _strategy(retryCount);
+        
         public void Wait(int retryCount)
         {
             Thread.Sleep(_strategy(retryCount));

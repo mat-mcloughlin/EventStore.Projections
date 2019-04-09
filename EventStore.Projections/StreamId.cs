@@ -9,10 +9,10 @@ namespace EventStore.Projections
         internal StreamId(string streamId)
         {
             Id = streamId;
-            
+
             Guard.AgainstNullArgument(nameof(streamId), streamId);
         }
-        
+
         public override bool Equals(object obj)
         {
             return obj is StreamId item && Id.Equals(item.Id);
@@ -21,6 +21,11 @@ namespace EventStore.Projections
         public override int GetHashCode()
         {
             return Id.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Id;
         }
     }
 }
