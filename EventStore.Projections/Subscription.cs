@@ -130,7 +130,7 @@
             }
             else
             {
-                subscriptionDropped(reason, exception);
+                subscriptionDropped?.Invoke(reason, exception);
             }
         }
 
