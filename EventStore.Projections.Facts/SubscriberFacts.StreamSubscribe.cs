@@ -44,7 +44,7 @@ namespace EventStore.Projections.Facts
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
-                (s, e) =>
+                e =>
                 {
                     count++;
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");
@@ -82,7 +82,7 @@ namespace EventStore.Projections.Facts
             subscription.Subscribe(new StreamId(streamId),
                 () => Checkpoint.FromEventNumber(start),
                 CatchUpSubscriptionSettings.Default,
-                (s, e) =>
+                e =>
                 {
                     count++;
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");

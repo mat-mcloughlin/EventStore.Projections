@@ -9,8 +9,8 @@ namespace EventStore.Projections
         internal CurrentSubscription(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
-            Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
-            Action<EventStoreCatchUpSubscription> liveProcessingStarted,
+            Func<ResolvedEvent, Task> eventAppeared,
+            Action liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
             StreamId = streamId;
@@ -27,9 +27,9 @@ namespace EventStore.Projections
 
         internal CatchUpSubscriptionSettings Settings { get; }
 
-        internal Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> EventAppeared { get; }
+        internal Func<ResolvedEvent, Task> EventAppeared { get; }
 
-        internal Action<EventStoreCatchUpSubscription> LiveProcessingStarted { get; }
+        internal Action LiveProcessingStarted { get; }
 
         internal Action<SubscriptionDropReason, Exception> SubscriptionDropped { get; }
     }

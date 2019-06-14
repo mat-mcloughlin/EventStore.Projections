@@ -1,17 +1,26 @@
 namespace EventStore.Projections
 {
+    using System;
     using ClientAPI;
 
-    struct Checkpoint
+    public struct Checkpoint
     {
         readonly long? _commitPosition;
-        
+
         readonly long? _preparePosition;
-        
-        Checkpoint(long? eventNumber)
+
+        internal Checkpoint(Position? position, long eventNumber)
         {
-            _commitPosition = eventNumber;
-            _preparePosition = 0;
+            if (position == null)
+            {
+                _commitPosition = eventNumber;
+                _preparePosition = eventNumber;
+            }
+            else
+            {
+                _commitPosition = position.Value.CommitPosition;
+                _preparePosition = position.Value.PreparePosition;
+            }
         }
 
         internal Position? ToPosition()
@@ -24,11 +33,11 @@ namespace EventStore.Projections
             return _commitPosition;
         }
 
-        internal static Checkpoint Start => new Checkpoint(null);
+        internal static Checkpoint Start => new Checkpoint();
 
-        internal static Checkpoint FromEventNumber(long? eventNumber)
+        internal static Checkpoint FromEventNumber(long eventNumber)
         {    
-            return new Checkpoint(eventNumber);
+            return new Checkpoint(null, eventNumber);
         }
 
         public override string ToString()

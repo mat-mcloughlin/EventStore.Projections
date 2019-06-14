@@ -42,7 +42,7 @@ namespace EventStore.Projections.Facts
             subscriber.Subscribe(new StreamId(streamId),
                 () => Checkpoint.Start,
                 CatchUpSubscriptionSettings.Default,
-                (s, e) =>
+                e =>
                 {
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");
 
@@ -80,7 +80,7 @@ namespace EventStore.Projections.Facts
             subscriber.Subscribe(new StreamId(streamId),
                 () => inMemoryCheckpoint.GetCheckpint,
                 CatchUpSubscriptionSettings.Default,
-                (s, e) =>
+                e =>
                 {
                     _output.WriteLine($"Processing Event {e.Event.EventNumber}");
 
@@ -116,9 +116,9 @@ namespace EventStore.Projections.Facts
 
     class InMemoryCheckpoint
     {
-        long? _checkpoint = 0;
+        long _checkpoint = 0;
 
-        internal void SetCheckpoint(long? checkpoint)
+        internal void SetCheckpoint(long checkpoint)
         {
             _checkpoint = checkpoint;
         }

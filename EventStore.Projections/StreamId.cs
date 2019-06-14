@@ -1,5 +1,7 @@
 namespace EventStore.Projections
 {
+    using System;
+
     class StreamId
     {
         internal string Id { get; }
@@ -8,9 +10,12 @@ namespace EventStore.Projections
 
         internal StreamId(string streamId)
         {
-            Id = streamId;
+            if (string.IsNullOrWhiteSpace(streamId))
+            {
+                throw new ArgumentException("streamId must not be null or whitespace");
+            }
 
-            Guard.AgainstNullArgument(nameof(streamId), streamId);
+            Id = streamId;
         }
 
         public override bool Equals(object obj)

@@ -4,7 +4,7 @@
     using System.Threading.Tasks;
     using ClientAPI;
 
-    class Subscriber
+    class Subscriber : ISubscriber
     {
         readonly IEventStoreConnection _eventStoreConnection;
 
@@ -15,6 +15,8 @@
         CurrentSubscription _currentSubscription;
 
         int _retryAttempts;
+
+        EventStoreCatchUpSubscription _subscription;  
 
         internal Subscriber(IEventStoreConnection eventStoreConnection,
             LoggingAdaptor loggingAdaptor,
@@ -28,11 +30,11 @@
             _retryPolicy = retryPolicy;
         }
 
-        internal void Subscribe(StreamId streamId,
+        public void Subscribe(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
-            Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
-            Action<EventStoreCatchUpSubscription> liveProcessingStarted = null,
+            Func<ResolvedEvent, Task> eventAppeared,
+            Action liveProcessingStarted = null,
             Action<SubscriptionDropReason, Exception> subscriptionDropped = null)
         {
             _currentSubscription = new CurrentSubscription(streamId,
@@ -63,14 +65,14 @@
 
         void SubscribeToAll(Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
-            Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
-            Action<EventStoreCatchUpSubscription> liveProcessingStarted,
+            Func<ResolvedEvent, Task> eventAppeared,
+            Action liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
             _loggingAdaptor.Information("Subscribing to all stream starting at checkpoint {0}",
                 checkpoint().ToString());
 
-            _eventStoreConnection.SubscribeToAllFrom(checkpoint().ToPosition(),
+            _subscription = _eventStoreConnection.SubscribeToAllFrom(checkpoint().ToPosition(),
                 settings,
                 OnEventAppeared(eventAppeared),
                 OnLiveProcessingStarted(liveProcessingStarted),
@@ -80,15 +82,15 @@
         void SubscribeToStream(StreamId streamId,
             Func<Checkpoint> checkpoint,
             CatchUpSubscriptionSettings settings,
-            Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared,
-            Action<EventStoreCatchUpSubscription> liveProcessingStarted,
+            Func<ResolvedEvent, Task> eventAppeared,
+            Action liveProcessingStarted,
             Action<SubscriptionDropReason, Exception> subscriptionDropped)
         {
             _loggingAdaptor.Information("Subscribing to {0} stream starting at checkpoint {1}",
                 streamId.ToString(),
                 checkpoint().ToString());
 
-            _eventStoreConnection.SubscribeToStreamFrom(streamId.Id,
+            _subscription = _eventStoreConnection.SubscribeToStreamFrom(streamId.Id,
                 checkpoint().ToEventNumber(),
                 settings,
                 OnEventAppeared(eventAppeared),
@@ -121,17 +123,17 @@
         }
 
         Action<EventStoreCatchUpSubscription> OnLiveProcessingStarted(
-            Action<EventStoreCatchUpSubscription> liveProcessingStarted)
+            Action liveProcessingStarted)
         {
-            return liveProcessingStarted;
+            return s => { liveProcessingStarted?.Invoke(); };
         }
 
         Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> OnEventAppeared(
-            Func<EventStoreCatchUpSubscription, ResolvedEvent, Task> eventAppeared)
+            Func<ResolvedEvent, Task> eventAppeared)
         {
             return async (s, e) =>
             {
-                await eventAppeared(s, e);
+                await eventAppeared(e);
                 _retryAttempts = 0;
             };
         }
@@ -183,5 +185,30 @@
                 _currentSubscription.LiveProcessingStarted,
                 _currentSubscription.SubscriptionDropped);
         }
+
+        public void Stop()
+        {
+            _subscription.Stop();
+        }
+
+        public void Restart()
+        {
+            _subscription.Stop();
+            Resubscribe();
+        }
+    }
+
+    interface ISubscriber
+    {
+        void Subscribe(StreamId streamId,
+            Func<Checkpoint> checkpoint,
+            CatchUpSubscriptionSettings settings,
+            Func<ResolvedEvent, Task> eventAppeared,
+            Action liveProcessingStarted = null,
+            Action<SubscriptionDropReason, Exception> subscriptionDropped = null);
+
+        void Stop();
+
+        void Restart();
     }
 }
